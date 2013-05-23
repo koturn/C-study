@@ -30,7 +30,7 @@ int main(void) {
 
   if (!exchange(str, 0, 4)) {
     fputs("エラーが発生しました\n", stderr);
-    exit(1);
+    return EXIT_FAILURE;
   }
   printf("1番目と5番目を入れ替えた文字列:%s\n", str);
   printf("さらに逆順に表示した文字列:");
