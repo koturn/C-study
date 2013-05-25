@@ -24,8 +24,8 @@ typedef unsigned int uint;
 #define DELETE_EOL(str)  ((str)[strlen(str) - 1] = '\0')  //< delete eol character.
 
 #ifdef __cplusplus
-const static uint N = 3;
-const static uint BUF_SIZE = 256;
+static const uint N = 3;
+static const uint BUF_SIZE = 256;
 #else
 #  define N        3
 #  define BUF_SIZE 256

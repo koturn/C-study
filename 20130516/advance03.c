@@ -3,7 +3,7 @@
 ### If you execute this source file as a shell-script,   ###
 ### you can compile this source file.                    ###
 ############################################################
-gcc -pipe -O3 -s -Wall -Wextra $0 $@ -o ${0%.*}
+gcc -pipe -O3 -s -Wall -Wextra -fopenmp $0 $@ -o ${0%.*}
 if [ $? -ne 0 ]; then
   echo '!!!Compile error!!!'
 fi
