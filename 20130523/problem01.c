@@ -36,7 +36,7 @@ exit
 #define LENGTH(array)  (sizeof(array) / sizeof((array)[0]))
 
 typedef unsigned int uint;
-#if !defined(__GNUC__) || __STDC_VERSION__ < 199901L
+#if !defined(__GNUC__) && __STDC_VERSION__ < 199901L
 __attribute__((const)) inline static double round(double x);
 #endif
 
@@ -57,7 +57,7 @@ int main(void) {
 }
 
 
-#if !defined(__GNUC__) || __STDC_VERSION__ < 199901L
+#if !defined(__GNUC__) && __STDC_VERSION__ < 199901L
 inline static double round(double x) {
   return x > 0.0 ? floor(x + 0.5) : (-1.0 * floor(fabs(x) + 0.5));
 }
