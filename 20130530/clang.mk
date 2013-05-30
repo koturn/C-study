@@ -1,13 +1,13 @@
 ### This Makefile was written for GNU Make. ###
-CC      = gcc
-CFLAGS  = -O3 -pipe -Wall -Wextra -std=gnu99
+CC      = clang
+CFLAGS  = -O3 -pipe -Wall -Wextra
 LDFLAGS = -O3 -s
-TARGET1 = problem01
-TARGET2 = problem02
-TARGET3 = problem03
-TARGET4 = advance01
-TARGET5 = advance02
-TARGET6 = advance03
+TARGET1 = problem01-1
+TARGET2 = problem01-2
+TARGET3 = problem02
+TARGET4 = problem03-1
+TARGET5 = problem03-2
+TARGET6 = problem03-3
 OBJ1    = $(addsuffix .o, $(basename $(TARGET1)))
 OBJ2    = $(addsuffix .o, $(basename $(TARGET2)))
 OBJ3    = $(addsuffix .o, $(basename $(TARGET3)))
@@ -23,10 +23,6 @@ ifeq ($(OS),Windows_NT)
     TARGET5 := $(addsuffix .exe, $(TARGET5))
     TARGET6 := $(addsuffix .exe, $(TARGET6))
     CFLAGS  += -finput-charset=utf-8 -fexec-charset=cp932
-endif
-
-ifeq ($(OMP),true)
-    CFLAGS += -fopenmp
 endif
 
 %.exe :
@@ -47,10 +43,6 @@ $(TARGET4) : $(OBJ4)
 $(TARGET5) : $(OBJ5)
 
 $(TARGET6) : $(OBJ6)
-	$(CC) $(LDFLAGS) $< $(LDLIBS) $(OMP_FLAG) -o $@
-
-$(OBJ6) : $(addsuffix .c, $(basename $(OBJ6)))
-	$(CC) $(CFLAGS) $(OMP_FLAG) $< -c -o $@
 
 
 .PHONY : clean

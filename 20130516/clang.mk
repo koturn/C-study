@@ -1,6 +1,6 @@
 ### This Makefile was written for GNU Make. ###
-CC      = gcc
-CFLAGS  = -O3 -pipe -Wall -Wextra -std=gnu99
+CC      = clang
+CFLAGS  = -O3 -pipe -Wall -Wextra
 LDFLAGS = -O3 -s
 TARGET1 = problem01
 TARGET2 = problem02
@@ -23,10 +23,6 @@ ifeq ($(OS),Windows_NT)
     TARGET5 := $(addsuffix .exe, $(TARGET5))
     TARGET6 := $(addsuffix .exe, $(TARGET6))
     CFLAGS  += -finput-charset=utf-8 -fexec-charset=cp932
-endif
-
-ifeq ($(OMP),true)
-    CFLAGS += -fopenmp
 endif
 
 %.exe :

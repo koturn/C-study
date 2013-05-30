@@ -2,5 +2,5 @@
 =====
 
 研究室のC言語勉強会のソースコード置き場です。  
-このディレクトリ上のMakefile, MSVC.mkを使ってmake/nmakeすると、  
+このディレクトリ上のMakefile, clang.mk, MSVC.mkを使ってmake/nmakeすると、  
 全ての子ディレクトリの全てのソースコードがコンパイルされます。
