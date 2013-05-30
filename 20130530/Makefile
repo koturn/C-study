@@ -1,6 +1,6 @@
 ### This Makefile was written for GNU Make. ###
 CC      = gcc
-CFLAGS  = -O3 -pipe -Wall -Wextra -std=gnu99
+CFLAGS  = -O3 -pipe -Wall -Wextra $(if $(STD), $(addprefix -std=, $(STD)),)
 LDFLAGS = -O3 -s
 TARGET1 = problem01-1
 TARGET2 = problem01-2
