@@ -48,7 +48,7 @@ exit
 typedef struct {
   char *name;
   int   grade;
-  int   class;
+  int   cls;
   int   point;
 } Student;
 
@@ -75,6 +75,6 @@ inline static void show_Student_data(const Student *restrict student) {
       "学年：%d\n"
       "クラス：%d\n"
       "得点：%d\n",
-      student->name, student->grade, student->class, student->point
+      student->name, student->grade, student->cls, student->point
   );
 }

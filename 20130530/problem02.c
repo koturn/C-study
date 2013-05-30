@@ -46,9 +46,6 @@ exit
 #  endif
 #endif
 
-#ifndef __GNUC__
-#  define __attribute__(attr)  // If '__attribute__' isn't available, remove '__attribute__'.
-#endif
 
 typedef unsigned int uint;
 #ifdef __cplusplus
