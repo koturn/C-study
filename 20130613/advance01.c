@@ -103,12 +103,19 @@ int main(void) {
  */
 inline static int **alloc_2d_array(uint row, uint col) {
   uint i;
-  int **array = CALLOC(int *, row);
-  if (array == NULL) return NULL;
+  int **array;
+  if ((array = CALLOC(int *, row)) == NULL) {
+    return NULL;
+  }
 
   for (i = 0; i < row; i++) {
-    array[i] = CALLOC(int, col);
-    if (array[i] == NULL) return NULL;
+    if ((array[i] = CALLOC(int, col)) == NULL) {
+      uint j;
+      for (j = 0; j < i; j++) {
+        FREE(&array[j]);
+      }
+      return NULL;
+    }
   }
   return array;
 }
