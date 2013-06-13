@@ -50,8 +50,8 @@ exit
 typedef unsigned int uint;
 inline static int  **alloc_2d_array(uint row, uint col);
 inline static void free_2d_array(int **array, uint row);
-static void show_2d_array(int *const restrict *const restrict array, uint row, uint col);
-static void transpose(int *restrict *restrict dst, int *const restrict *const restrict src, uint row, uint col);
+static void show_2d_array(const int *const restrict *restrict array, uint row, uint col);
+static void transpose(int *restrict *restrict dst, const int *const restrict *restrict src, uint row, uint col);
 
 
 /*!
@@ -82,12 +82,12 @@ int main(void) {
   }
   puts("");
   puts("Matrix = ");
-  show_2d_array(array, row, col);
+  show_2d_array((const int *const *)array, row, col);
   puts("============================================================");
 
-  transpose(t_array, array, row, col);
+  transpose(t_array, (const int *const *)array, row, col);
   puts("Transposed Matrix = ");
-  show_2d_array(t_array, col, row);
+  show_2d_array((const int *const *)t_array, col, row);
 
   free_2d_array(array, row);
   free_2d_array(t_array, row);
@@ -97,9 +97,9 @@ int main(void) {
 
 /*!
  * @brief Allocation 2-demensional array (matrix)
- * @param [in] row  Row of matrix
- * @param [in] col  Column of matrix
- * @return The address of allocated matrix (ERROR: NULL).
+ * @param [in] row  Number of row of matrix
+ * @param [in] col  Number of column of matrix
+ * @return The address of dynamically allocated matrix (ERROR: NULL).
  */
 inline static int **alloc_2d_array(uint row, uint col) {
   uint i;
@@ -117,7 +117,7 @@ inline static int **alloc_2d_array(uint row, uint col) {
 /*!
  * @brief Free 2-demensional array (matrix)
  * @param [in] array  2-demensional array
- * @param [in] row    Row of matrix
+ * @param [in] row    Number of row of matrix
  */
 inline static void free_2d_array(int **array, uint row) {
   uint i;
@@ -131,10 +131,10 @@ inline static void free_2d_array(int **array, uint row) {
 /*!
  * @brief Free 2-demensional array
  * @param [in] array  2-demensional array (matrix)
- * @param [in] row    Row of matrix
- * @param [in] col    Column of matrix
+ * @param [in] row    Number of row of matrix
+ * @param [in] col    Number of column of matrix
  */
-static void show_2d_array(int *const restrict *const restrict array, uint row, uint col) {
+static void show_2d_array(const int *const restrict *restrict array, uint row, uint col) {
   uint i;
   for (i = 0; i < row; i++) {
     uint j;
@@ -149,11 +149,11 @@ static void show_2d_array(int *const restrict *const restrict array, uint row, u
 /*!
  * @brief Transpose matrix
  * @param [in] dst  A matrix which will be assigned transposed matrix
- * @param [in] src  A source matrix which will be assigned transposed matrix
- * @param [in] row  Row of matrix
- * @param [in] col  Column of matrix
+ * @param [in] src  A source matrix
+ * @param [in] row  Number of row of matrix
+ * @param [in] col  Number of column of matrix
  */
-static void transpose(int *restrict *restrict dst, int *restrict const *restrict const src, uint row, uint col) {
+static void transpose(int *restrict *restrict dst, const int *const restrict *restrict src, uint row, uint col) {
   uint i;
   for (i = 0; i < row; i++) {
     uint j;
