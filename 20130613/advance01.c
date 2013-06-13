@@ -62,8 +62,8 @@ int main(void) {
   uint row, col;
   uint i;
   int **array, **t_array;
-  printf("Number of row = ?\b"); scanf("%u", &row);
-  printf("Number of COL = ?\b"); scanf("%u", &col);
+  printf("Number of ROW    = ?\b"); scanf("%u", &row);
+  printf("Number of COLUMN = ?\b"); scanf("%u", &col);
 
   array   = alloc_2d_array(row, col);
   t_array = alloc_2d_array(col, row);
