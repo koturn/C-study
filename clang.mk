@@ -4,22 +4,25 @@ MAKEFILE     = clang.mk
 TARGET_DIR1  = 20130516
 TARGET_DIR2  = 20130523
 TARGET_DIR3  = 20130530
+TARGET_DIR4  = 20130613
+DIR_LIST     = $(TARGET_DIR1) $(TARGET_DIR2) $(TARGET_DIR3) $(TARGET_DIR4)
 
 
 .PHONY : all
 all :
-	$(MAKE) -C $(TARGET_DIR1) -f $(MAKEFILE)
-	$(MAKE) -C $(TARGET_DIR2) -f $(MAKEFILE)
-	$(MAKE) -C $(TARGET_DIR3) -f $(MAKEFILE)
+	@for dir in $(DIR_LIST); do           \
+	    $(MAKE) -C $$dir -f $(MAKEFILE);  \
+	done
 
 
 .PHONY : clean
 clean :
-	$(MAKE) -C $(TARGET_DIR1) -f $(MAKEFILE) clean
-	$(MAKE) -C $(TARGET_DIR2) -f $(MAKEFILE) clean
-	$(MAKE) -C $(TARGET_DIR3) -f $(MAKEFILE) clean
+	@for dir in $(DIR_LIST); do                 \
+	    $(MAKE) -C $$dir -f $(MAKEFILE) clean;  \
+	done
+
 .PHONY : objclean
 objclean :
-	$(MAKE) -C $(TARGET_DIR1) -f $(MAKEFILE) objclean
-	$(MAKE) -C $(TARGET_DIR2) -f $(MAKEFILE) objclean
-	$(MAKE) -C $(TARGET_DIR3) -f $(MAKEFILE) objclean
+	@for dir in $(DIR_LIST); do                    \
+	    $(MAKE) -C $$dir -f $(MAKEFILE) objclean;  \
+	done

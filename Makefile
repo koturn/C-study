@@ -3,22 +3,25 @@ MAKE        ?= make
 TARGET_DIR1  = 20130516
 TARGET_DIR2  = 20130523
 TARGET_DIR3  = 20130530
+TARGET_DIR4  = 20130613
+DIR_LIST     = $(TARGET_DIR1) $(TARGET_DIR2) $(TARGET_DIR3) $(TARGET_DIR4)
 
 
 .PHONY : all
 all :
-	$(MAKE) -C $(TARGET_DIR1)
-	$(MAKE) -C $(TARGET_DIR2)
-	$(MAKE) -C $(TARGET_DIR3)
+	@for dir in $(DIR_LIST); do  \
+	    $(MAKE) -C $$dir;        \
+	done
 
 
 .PHONY : clean
 clean :
-	$(MAKE) -C $(TARGET_DIR1) clean
-	$(MAKE) -C $(TARGET_DIR2) clean
-	$(MAKE) -C $(TARGET_DIR3) clean
+	@for dir in $(DIR_LIST); do  \
+	    $(MAKE) -C $$dir clean;  \
+	done
+
 .PHONY : objclean
 objclean :
-	$(MAKE) -C $(TARGET_DIR1) objclean
-	$(MAKE) -C $(TARGET_DIR2) objclean
-	$(MAKE) -C $(TARGET_DIR3) objclean
+	@for dir in $(DIR_LIST); do     \
+	    $(MAKE) -C $$dir objclean;  \
+	done
