@@ -44,7 +44,7 @@ exit
 #  endif
 #endif
  
-#define CALLOC(type, n)   ((type *)calloc((n), sizeof(type)))  // A Wrapper macro of calloc()
+#define CALLOC(type, n)   ((type *)calloc((n), sizeof(type)))  // A wrapper macro of calloc()
 #define FREE(ptr_p)       (free(*(ptr_p)), *(ptr_p) = NULL)    // A wrapper macro of free()
 
 typedef unsigned int uint;
