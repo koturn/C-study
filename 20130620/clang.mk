@@ -16,12 +16,13 @@ ifeq ($(OS),Windows_NT)
     CFLAGS  += -finput-charset=utf-8 -fexec-charset=cp932
 endif
 
+
 %.exe :
 	$(CC) $(LDFLAGS) $(filter %.c %.o, $^) $(LDLIBS) -o $@
 
 
 .PHONY : all
-all : $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6)
+all : $(TARGET1) $(TARGET2) $(TARGET3)
 
 $(TARGET1) : $(OBJ1)
 

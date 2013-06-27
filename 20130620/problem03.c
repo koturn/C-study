@@ -50,7 +50,7 @@ static void copy_file(FILE *out_fp, FILE *in_fp);
  * @return exit-status
  */
 int main(int argc, char *argv[]) {
-  FILE   *restrict in_fp, *restrict out_fp;
+  FILE *restrict in_fp, *restrict out_fp;
   if (argc != 3) {
     fputs("Arguments must be two!\n"
           "[USAGE]\n"

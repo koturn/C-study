@@ -22,7 +22,7 @@ endif
 
 
 .PHONY : all
-all : $(TARGET1) $(TARGET2) $(TARGET3) $(TARGET4) $(TARGET5) $(TARGET6)
+all : $(TARGET1) $(TARGET2) $(TARGET3)
 
 $(TARGET1) : $(OBJ1)
 
